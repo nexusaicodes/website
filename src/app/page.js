@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
@@ -9,8 +11,8 @@ export default function Home() {
         <Image
           src="/logo.png"
           alt="Nexus AI Logo"
-          width={128}
-          height={128}
+          width={256}
+          height={256}
           className="mx-auto mb-4"
         />
         <h1 className="text-4xl font-bold">Welcome to Nexus AI</h1>
@@ -41,7 +43,10 @@ export default function Home() {
 
       {/* Call-to-Action Section */}
       <div className="mt-12">
-        <Button className="px-6 py-3 text-lg font-semibold bg-blue-600 hover:bg-blue-700">
+        <Button
+          className="px-6 py-3 text-lg font-semibold bg-blue-600 hover:bg-blue-700"
+          onClick={() => window.open("https://calendly.com/meta-nexusai/15min")}
+        >
           Schedule a Demo
         </Button>
       </div>
