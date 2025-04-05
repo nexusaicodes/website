@@ -1,63 +1,87 @@
-"use client";
-
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { CircleUserRound, Notebook, CalendarPlus, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="bg-[#2c3755] text-white min-h-screen flex flex-col items-center p-6">
+    <div className="text-white min-h-screen flex flex-col items-center p-6">
       {/* Hero Section */}
       <div className="text-center mt-10">
         <Image
-          src="/logo.png"
+          src="/logo.svg"
           alt="Nexus AI Logo"
           width={256}
           height={256}
           className="mx-auto mb-4"
         />
-        <h1 className="text-4xl font-bold">Welcome to Nexus AI</h1>
+        <h1 className="text-4xl font-bold">Nexus AI</h1>
         <p className="text-lg mt-2 opacity-80">
-          Innovating AI Solutions for the Future
-        </p>
-      </div>
-
-      {/* About Section */}
-      <div className="mt-12 text-center max-w-2xl">
-        <h2 className="text-2xl font-semibold">About Us</h2>
-        <p className="mt-2 opacity-80">
-          Nexus AI specializes in cutting-edge AI solutions tailored to meet
-          business needs, helping companies enhance efficiency and automation.
+          Unlock the potential of AI and Cloud for your business
         </p>
       </div>
 
       {/* Services Section */}
       <div className="mt-12 text-center max-w-2xl">
-        <h2 className="text-2xl font-semibold">Our Services</h2>
-        <ul className="mt-4 space-y-2 opacity-80">
-          <li>- AI Consulting & Strategy</li>
-          <li>- Custom AI Model Development</li>
-          <li>- AI-Powered Automation</li>
-          <li>- Data Analytics & Insights</li>
-        </ul>
+        <div className="flex justify-center space-x-6">
+          <div className="flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center">
+              <Link href="/about">
+                <CircleUserRound
+                  width={56}
+                  height={56}
+                  className="hover:text-black transition-colors duration-300 ease-in-out"
+                />
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center">
+              <a
+                href="https://substack.com/@nexusaistories"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Notebook
+                  width={56}
+                  height={56}
+                  className="hover:text-black transition-colors duration-300 ease-in-out"
+                />
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center">
+              <a
+                href="https://calendly.com/meta-nexusai/15min"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CalendarPlus
+                  width={56}
+                  height={56}
+                  className="hover:text-black transition-colors duration-300 ease-in-out"
+                />
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center">
+              <a href="mailto:contact@nexusai.world">
+                <Mail
+                  width={56}
+                  height={56}
+                  className="hover:text-black transition-colors duration-300 ease-in-out"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Call-to-Action Section */}
       <div className="mt-12">
-        <Button
-          className="px-6 py-3 text-lg font-semibold bg-blue-600 hover:bg-blue-700"
-          onClick={() => window.open("https://calendly.com/meta-nexusai/15min")}
-        >
-          Schedule a Demo
-        </Button>
-      </div>
-
-      {/* Contact Section */}
-      <div className="mt-12 text-center opacity-80">
-        <p>
-          Contact us at:{" "}
-          <a href="mailto:contact@nexusai.com" className="underline">
-            contact@nexusai.com
-          </a>
+        <p className="text-sm opacity-50 text-center">
+          © {new Date().getFullYear()} AI Nexus Consulting FZ-LLC. All rights
+          reserved.
         </p>
       </div>
     </div>
