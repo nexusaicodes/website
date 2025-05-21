@@ -62,7 +62,7 @@ export default function Home() {
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 rounded-full flex items-center justify-center">
               <a
-                href="https://calendly.com/meta-nexusai/15min"
+                href="https://nexusai.zohobookings.com/#/4735220000000042052"
                 target="_blank"
                 rel="noopener noreferrer"
               >
