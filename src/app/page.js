@@ -7,20 +7,30 @@ export default function Home() {
     <div className="text-white min-h-screen flex flex-col items-center p-6">
       {/* Hero Section */}
       <div className="text-center mt-10">
-        <Image
-          src="/logo.svg"
-          alt="Nexus AI Logo"
-          width={256}
-          height={256}
-          className="mx-auto mb-4"
-        />
-        <h1 className="text-4xl font-bold">Nexus AI</h1>
-        <p className="text-lg mt-2 opacity-80">
-          Unlock the potential of AI and Cloud for your business
+        <Link href="/" as={"/"}>
+          <Image
+            priority={true}
+            src="/logo.svg"
+            alt="Nexus AI Logo"
+            width={256}
+            height={256}
+            className="mx-auto mb-4"
+          />
+        </Link>
+        <Link href="/">
+          <h1 className="text-4xl font-bold">Nexus AI</h1>
+        </Link>
+        <p className="text-2xl mt-8 opacity-80">
+          AI-Powered Digital Consulting to Build, Scale & Evolve.
+        </p>
+        <p className="text-lg mt-8 opacity-80">
+          <button className="bg-[#324057] font-bold text-white px-12 py-4 rounded-full">
+            <Link href="/services">Explore Services</Link>
+          </button>
         </p>
       </div>
 
-      {/* Services Section */}
+      {/* Quick Links Section */}
       <div className="mt-12 text-center max-w-2xl">
         <div className="flex justify-center space-x-6">
           <div className="flex flex-col items-center">

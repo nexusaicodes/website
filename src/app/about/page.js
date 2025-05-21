@@ -1,18 +1,24 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
     <div className="text-white min-h-screen flex flex-col items-center p-6">
       {/* Hero Section */}
       <div className="text-center mt-10">
-        <Image
-          src="/logo.svg"
-          alt="Nexus AI Logo"
-          width={256}
-          height={256}
-          className="mx-auto mb-4"
-        />
-        <h1 className="text-4xl font-bold">Nexus AI</h1>
+        <Link href="/" as={"/"}>
+          <Image
+            priority={true}
+            src="/logo.svg"
+            alt="Nexus AI Logo"
+            width={256}
+            height={256}
+            className="mx-auto mb-4"
+          />
+        </Link>
+        <Link href="/">
+          <h1 className="text-4xl font-bold">Nexus AI</h1>
+        </Link>
         <p className="text-lg mt-2 opacity-80">Our Story</p>
       </div>
 
