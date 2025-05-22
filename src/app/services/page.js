@@ -7,10 +7,42 @@ import {
   Rocket,
   RefreshCcw,
   Globe,
+  CloudCog,
+  Network,
+  Layers,
+  ShieldCheck,
+  BarChart4,
+  Zap,
 } from "lucide-react";
 
-function ServicesSection() {
-  const services = [
+const ServicesSection = (services) => {
+  return (
+    <section className="py-8 px-6 max-w-5xl mx-auto">
+      <hr className="mb-10"></hr>
+      <h2 className="text-center font-bold text-2xl mb-8">
+        {services.heading}
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {services.list.map((service, idx) => (
+          <div
+            key={idx}
+            className="text-center bg-muted/10 p-6 rounded-2xl shadow transition"
+          >
+            {service.icon}
+            <h3 className="text-lg font-semibold text-white mt-4">
+              {service.title}
+            </h3>
+            <p className="text-sm text-white mt-2">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const digitalJourneyServices = {
+  heading: "Digital Journey",
+  list: [
     {
       icon: <BrainCog className="w-8 h-8 text-white mx-auto color-white" />,
       title: "We Strategise Intelligently",
@@ -44,26 +76,50 @@ function ServicesSection() {
       title: "We Avail Everywhere",
       description: "Responsive apps for every device, network, and region.",
     },
-  ];
-  return (
-    <section className="py-16 px-6 max-w-5xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {services.map((service, idx) => (
-          <div
-            key={idx}
-            className="text-center bg-muted/10 p-6 rounded-2xl shadow transition"
-          >
-            {service.icon}
-            <h3 className="text-lg font-semibold text-white mt-4">
-              {service.title}
-            </h3>
-            <p className="text-sm text-white mt-2">{service.description}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+  ],
+};
+
+const cloudJourneyServices = {
+  heading: "Cloud Journey",
+  list: [
+    {
+      icon: <CloudCog className="w-8 h-8 text-white mx-auto" />,
+      title: "We Architect the Cloud",
+      description:
+        "Design scalable, AI-ready cloud infrastructure tailored to your business goals.",
+    },
+    {
+      icon: <Network className="w-8 h-8 text-white mx-auto" />,
+      title: "We Migrate Seamlessly",
+      description:
+        "Effortless cloud migration with zero-downtime strategy and smart dependency mapping.",
+    },
+    {
+      icon: <Layers className="w-8 h-8 text-white mx-auto" />,
+      title: "We Build Cloud-Native Apps",
+      description:
+        "Leverage microservices, containers, and AI-enhanced CI/CD pipelines for agility.",
+    },
+    {
+      icon: <ShieldCheck className="w-8 h-8 text-white mx-auto" />,
+      title: "We Secure Intelligently",
+      description:
+        "Implement proactive, AI-driven threat detection and automated security compliance.",
+    },
+    {
+      icon: <BarChart4 className="w-8 h-8 text-white mx-auto" />,
+      title: "We Optimize for ROI",
+      description:
+        "Continuous cost-performance optimization with predictive usage analytics.",
+    },
+    {
+      icon: <Zap className="w-8 h-8 text-white mx-auto" />,
+      title: "We Automate Everything",
+      description:
+        "From backups to auto-scaling, we integrate smart automation across your stack.",
+    },
+  ],
+};
 
 export default function ServicesPage() {
   return (
@@ -87,12 +143,13 @@ export default function ServicesPage() {
           Our Services
         </h2>
         <p className="text-center text-gray-300 text-base max-w-xl mx-auto">
-          From strategy to scale — AI powering every step.
+          From platform to cloud — AI powering every step.
         </p>
       </div>
 
       {/* Single Service Block */}
-      <ServicesSection></ServicesSection>
+      <ServicesSection {...digitalJourneyServices}></ServicesSection>
+      <ServicesSection {...cloudJourneyServices}></ServicesSection>
 
       <div className="h-16 rounded-full flex items-center justify-center">
         <a

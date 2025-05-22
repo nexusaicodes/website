@@ -21,12 +21,14 @@ export default function Home() {
           <h1 className="text-4xl font-bold">Nexus AI</h1>
         </Link>
         <p className="text-2xl mt-8 opacity-80">
-          AI-Powered Digital Consulting to Build, Scale & Evolve.
+          Digital Transformation & Cloud Solutions for the AI Era.
         </p>
         <p className="text-lg mt-8 opacity-80">
-          <button className="bg-[#324057] font-bold text-white px-12 py-4 rounded-full">
-            <Link href="/services">Explore Services</Link>
-          </button>
+          <Link href="/services">
+            <button className="bg-[#324057] font-bold text-white px-12 py-4 rounded-full hover:cursor-pointer">
+              Explore Services
+            </button>
+          </Link>
         </p>
       </div>
 
