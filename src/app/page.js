@@ -9,67 +9,74 @@ export default function Home() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
 
-  const [bgHeight, setBgHeight] = useState(
-    typeof window !== "undefined" ? window.innerHeight * 0.5 : 0,
-  );
-
-  useEffect(() => {
-    function handleResize() {
-      setBgHeight(window.innerHeight * 0.5);
-    }
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   useEffect(() => {
     function handleClickOutside(event) {
-      const navItems = document.querySelectorAll('[data-nav-item]');
-      const dropdowns = document.querySelectorAll('[data-dropdown]');
-      
+      const navItems = document.querySelectorAll("[data-nav-item]");
+      const dropdowns = document.querySelectorAll("[data-dropdown]");
+
       let clickedInsideNav = false;
-      navItems.forEach(item => {
+      navItems.forEach((item) => {
         if (item.contains(event.target)) {
           clickedInsideNav = true;
         }
       });
-      
+
       let clickedInsideDropdown = false;
-      dropdowns.forEach(dropdown => {
+      dropdowns.forEach((dropdown) => {
         if (dropdown.contains(event.target)) {
           clickedInsideDropdown = true;
         }
       });
-      
+
       if (!clickedInsideNav && !clickedInsideDropdown) {
         setOpenDropdown(null);
       }
     }
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   const navItems = [
     {
       label: "About",
-      href: "/about",
-      dropdown: ["Our Story", "Team", "Careers"],
+      dropdown: [
+        { title: "Our Story", href: "/about#story" },
+        { title: "Team", href: "/about#team" },
+      ],
     },
     {
       label: "Services",
-      href: "/services",
-      dropdown: ["Digital Journey", "Cloud Journey"],
+      dropdown: [
+        { title: "Cloud Excellence", href: "/services#cloud-excellence" },
+        { title: "AI-First Development", href: "/services#ai-development" },
+        { title: "Digital Journey", href: "/services#digital-journey" },
+        { title: "AI for Enterprise", href: "/services#ai-for-enterprise" },
+      ],
     },
     {
       label: "News & Events",
-      href: "/#news",
-      dropdown: ["Latest News", "Events"],
+      dropdown: [
+        { title: "Latest News", href: "/news" },
+        { title: "Events", href: "/events" },
+      ],
     },
     {
       label: "Contact Us",
-      href: "/#contact",
-      dropdown: ["Email", "Book a Meeting"],
+      dropdown: [
+        {
+          title: "Email Us",
+          href: "mailto:contact@nexusai.world?subject=Interested%20in%20your%20services",
+        },
+        {
+          title: "WhatsApp Us",
+          href: "https://wa.me/971588553437?text=Hello%2C%20I'd%20like%20to%20know%20more%20about%20your%20services",
+        },
+        {
+          title: "Book a Meeting",
+          href: "https://nexusai.zohobookings.com/#/4735220000000042052",
+        },
+      ],
     },
   ];
 
@@ -99,7 +106,9 @@ export default function Home() {
               <div key={item.label} className="relative group" data-nav-item>
                 <button
                   className={`font-semibold text-lg hover:border-b-2 focus:outline-none transition-colors flex items-center ${
-                    hoveredItem !== null && hoveredItem !== idx ? "text-white/50" : ""
+                    hoveredItem !== null && hoveredItem !== idx
+                      ? "text-white/50"
+                      : ""
                   }`}
                   onMouseEnter={() => {
                     setHoveredItem(idx);
@@ -112,14 +121,14 @@ export default function Home() {
                   }}
                 >
                   {item.label}
-                  <span 
+                  <span
                     className="inline-block ml-2"
                     style={{
-                      width: '0.5rem',
-                      height: '0.5rem',
-                      border: 'solid white',
-                      borderWidth: '0 0.125rem 0.125rem 0',
-                      transform: 'rotate(45deg) translate(0, -0.125rem)',
+                      width: "0.5rem",
+                      height: "0.5rem",
+                      border: "solid white",
+                      borderWidth: "0 0.125rem 0.125rem 0",
+                      transform: "rotate(45deg) translate(0, -0.125rem)",
                     }}
                     aria-hidden="true"
                   />
@@ -129,13 +138,13 @@ export default function Home() {
                     className="absolute left-0 mt-2 w-48 bg-black/90 rounded shadow-lg py-2 z-30"
                     data-dropdown
                   >
-                    {item.dropdown.map((sub, subIdx) => (
+                    {item.dropdown.map((sub) => (
                       <a
-                        key={sub}
-                        href={item.href}
+                        key={sub.title}
+                        href={sub.href}
                         className="block px-4 py-2 text-white hover:bg-primary/30 text-base"
                       >
-                        {sub}
+                        {sub.title}
                       </a>
                     ))}
                   </div>
@@ -152,12 +161,48 @@ export default function Home() {
         >
           <div className="relative z-10 flex flex-col items-start w-full max-w-5xl pl-4 md:pl-16">
             <h1 className="text-[4rem] md:text-[6rem] font-extrabold text-left leading-tight mb-8">
-              Welcome to the Future of AI Consulting
+              AI. Design.
+              <br />
+              Engineering.
             </h1>
             <p className="text-2xl md:text-3xl text-left max-w-3xl opacity-80 mb-12">
-              Digital Transformation & Cloud Solutions for the AI Era. <br />
-              Empowering organizations with next-gen technology.
+              Delivering extraordinary impact by blending design, engineering
+              and AI expertise.
             </p>
+          </div>
+        </section>
+
+        <hr className="w-[90%] mx-auto border-t-2 border-white/20 my-0" />
+
+        {/* Latest News Section */}
+        <section
+          id="news"
+          className="py-16 w-full flex flex-col items-center min-h-screen justify-center relative overflow-hidden"
+        >
+          <div className="relative z-10 w-full flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-12">
+              Latest News
+            </h2>
+            <div className="flex flex-col md:flex-row gap-8 max-w-4xl w-full justify-center">
+              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
+                <h3 className="font-semibold text-2xl mb-2">
+                  Nexus AI launches new cloud platform
+                </h3>
+                <p className="text-base opacity-80">
+                  Our latest platform leverages AI to optimize cloud operations
+                  for enterprises.
+                </p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
+                <h3 className="font-semibold text-2xl mb-2">
+                  Upcoming Webinar: AI in Business
+                </h3>
+                <p className="text-base opacity-80">
+                  Join us for a live session on integrating AI into your
+                  business workflows. Register now!
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -200,40 +245,6 @@ export default function Home() {
 
         <hr className="w-[90%] mx-auto border-t-2 border-white/20 my-0" />
 
-        {/* Latest News Section */}
-        <section
-          id="news"
-          className="py-16 w-full flex flex-col items-center min-h-screen justify-center relative overflow-hidden"
-        >
-          <div className="relative z-10 w-full flex flex-col items-center">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-12">
-              Latest News
-            </h2>
-            <div className="flex flex-col md:flex-row gap-8 max-w-4xl w-full justify-center">
-              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
-                <h3 className="font-semibold text-2xl mb-2">
-                  Nexus AI launches new cloud platform
-                </h3>
-                <p className="text-base opacity-80">
-                  Our latest platform leverages AI to optimize cloud operations
-                  for enterprises.
-                </p>
-              </div>
-              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
-                <h3 className="font-semibold text-2xl mb-2">
-                  Upcoming Webinar: AI in Business
-                </h3>
-                <p className="text-base opacity-80">
-                  Join us for a live session on integrating AI into your
-                  business workflows. Register now!
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <hr className="w-[90%] mx-auto border-t-2 border-white/20 my-0" />
-
         {/* CTA Section */}
         <section
           id="contact"
@@ -244,8 +255,8 @@ export default function Home() {
               Ready to Transform Your Business?
             </h2>
             <p className="text-xl mb-8 max-w-2xl text-center opacity-80">
-              Partner with Nexus AI for cutting-edge digital and cloud solutions
-              tailored to your needs. Let’s build the future together.
+              Partner with Nexus AI for cutting-edge technological solutions
+              tailored to your needs. Let's build the future together.
             </p>
             <a
               href="https://nexusai.zohobookings.com/#/4735220000000042052"
