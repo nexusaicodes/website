@@ -1,100 +1,268 @@
+"use client";
+
 import Image from "next/image";
-import { CircleUserRound, Notebook, CalendarPlus, Mail } from "lucide-react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  // Simple dropdown state for demonstration
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState(null);
+
+  const [bgHeight, setBgHeight] = useState(
+    typeof window !== "undefined" ? window.innerHeight * 0.5 : 0,
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setBgHeight(window.innerHeight * 0.5);
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      const navItems = document.querySelectorAll('[data-nav-item]');
+      const dropdowns = document.querySelectorAll('[data-dropdown]');
+      
+      let clickedInsideNav = false;
+      navItems.forEach(item => {
+        if (item.contains(event.target)) {
+          clickedInsideNav = true;
+        }
+      });
+      
+      let clickedInsideDropdown = false;
+      dropdowns.forEach(dropdown => {
+        if (dropdown.contains(event.target)) {
+          clickedInsideDropdown = true;
+        }
+      });
+      
+      if (!clickedInsideNav && !clickedInsideDropdown) {
+        setOpenDropdown(null);
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  const navItems = [
+    {
+      label: "About",
+      href: "/about",
+      dropdown: ["Our Story", "Team", "Careers"],
+    },
+    {
+      label: "Services",
+      href: "/services",
+      dropdown: ["Digital Journey", "Cloud Journey"],
+    },
+    {
+      label: "News & Events",
+      href: "/#news",
+      dropdown: ["Latest News", "Events"],
+    },
+    {
+      label: "Contact Us",
+      href: "/#contact",
+      dropdown: ["Email", "Book a Meeting"],
+    },
+  ];
+
   return (
-    <div className="text-white min-h-screen flex flex-col items-center p-6">
-      {/* Hero Section */}
-      <div className="text-center mt-10">
-        <Link href="/" as={"/"}>
-          <Image
-            priority={true}
-            src="/logo.svg"
-            alt="Nexus AI Logo"
-            width={256}
-            height={256}
-            className="mx-auto mb-4"
-          />
-        </Link>
-        <Link href="/">
-          <h1 className="text-4xl font-bold">Nexus AI</h1>
-        </Link>
-        <p className="text-2xl mt-8 opacity-80">
-          Digital Transformation & Cloud Solutions for the AI Era.
-        </p>
-        <p className="text-lg mt-8 opacity-80">
-          <Link href="/services">
-            <button className="bg-[#324057] font-bold text-white px-12 py-4 rounded-full hover:cursor-pointer">
-              Explore Services
-            </button>
-          </Link>
-        </p>
-      </div>
+    <div className="text-white min-h-screen flex flex-col relative overflow-hidden">
+      <div className="absolute inset-0 bg-black/60 z-0" />
+      <div className="relative z-10 flex flex-col min-h-screen">
+        {/* Nav Bar */}
+        <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-8 py-4 bg-black/30 backdrop-blur-md z-[9999]">
+          <div className="flex items-center gap-4">
+            <Link href="/">
+              <Image
+                src="/logo.svg"
+                alt="Nexus AI Logo"
+                width={48}
+                height={48}
+              />
+            </Link>
+            <Link href="/">
+              <span className="text-2xl font-bold tracking-tight ml-2">
+                Nexus AI
+              </span>
+            </Link>
+          </div>
+          <div className="flex gap-8 items-center mr-8">
+            {navItems.map((item, idx) => (
+              <div key={item.label} className="relative group" data-nav-item>
+                <button
+                  className={`font-semibold text-lg hover:border-b-2 focus:outline-none transition-colors flex items-center ${
+                    hoveredItem !== null && hoveredItem !== idx ? "text-white/50" : ""
+                  }`}
+                  onMouseEnter={() => {
+                    setHoveredItem(idx);
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredItem(null);
+                  }}
+                  onClick={() => {
+                    setOpenDropdown(openDropdown === idx ? null : idx);
+                  }}
+                >
+                  {item.label}
+                  <span 
+                    className="inline-block ml-2"
+                    style={{
+                      width: '0.5rem',
+                      height: '0.5rem',
+                      border: 'solid white',
+                      borderWidth: '0 0.125rem 0.125rem 0',
+                      transform: 'rotate(45deg) translate(0, -0.125rem)',
+                    }}
+                    aria-hidden="true"
+                  />
+                </button>
+                {item.dropdown && openDropdown === idx && (
+                  <div
+                    className="absolute left-0 mt-2 w-48 bg-black/90 rounded shadow-lg py-2 z-30"
+                    data-dropdown
+                  >
+                    {item.dropdown.map((sub, subIdx) => (
+                      <a
+                        key={sub}
+                        href={item.href}
+                        className="block px-4 py-2 text-white hover:bg-primary/30 text-base"
+                      >
+                        {sub}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </nav>
 
-      {/* Quick Links Section */}
-      <div className="mt-12 text-center max-w-2xl">
-        <div className="flex justify-center space-x-6">
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center">
-              <Link href="/about">
-                <CircleUserRound
-                  width={56}
-                  height={56}
-                  className="hover:text-black transition-colors duration-300 ease-in-out"
-                />
-              </Link>
-            </div>
+        {/* Main Hero Section */}
+        <section
+          id="hero"
+          className="flex flex-col justify-center flex-1 py-24 min-h-screen relative overflow-hidden"
+        >
+          <div className="relative z-10 flex flex-col items-start w-full max-w-5xl pl-4 md:pl-16">
+            <h1 className="text-[4rem] md:text-[6rem] font-extrabold text-left leading-tight mb-8">
+              Welcome to the Future of AI Consulting
+            </h1>
+            <p className="text-2xl md:text-3xl text-left max-w-3xl opacity-80 mb-12">
+              Digital Transformation & Cloud Solutions for the AI Era. <br />
+              Empowering organizations with next-gen technology.
+            </p>
           </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center">
-              <a
-                href="https://substack.com/@nexusaistories"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Notebook
-                  width={56}
-                  height={56}
-                  className="hover:text-black transition-colors duration-300 ease-in-out"
-                />
-              </a>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center">
-              <a
-                href="https://nexusai.zohobookings.com/#/4735220000000042052"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <CalendarPlus
-                  width={56}
-                  height={56}
-                  className="hover:text-black transition-colors duration-300 ease-in-out"
-                />
-              </a>
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center">
-              <a href="mailto:contact@nexusai.world">
-                <Mail
-                  width={56}
-                  height={56}
-                  className="hover:text-black transition-colors duration-300 ease-in-out"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+        </section>
 
-      <div className="mt-12">
-        <p className="text-sm opacity-50 text-center">
+        <hr className="w-[90%] mx-auto border-t-2 border-white/20 my-0" />
+
+        {/* Testimonials Section */}
+        <section
+          id="testimonials"
+          className="py-16 w-full flex flex-col items-center min-h-screen justify-center relative overflow-hidden"
+        >
+          <div className="relative z-10 w-full flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-12">
+              Testimonials
+            </h2>
+            <div className="flex flex-col md:flex-row gap-8 max-w-4xl w-full justify-center">
+              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
+                <p className="text-lg italic mb-4">
+                  “Nexus AI transformed our business with their innovative
+                  solutions!”
+                </p>
+                <span className="font-semibold">- Alex, CEO of TechCorp</span>
+              </div>
+              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
+                <p className="text-lg italic mb-4">
+                  “Professional, reliable, and truly ahead of the curve.”
+                </p>
+                <span className="font-semibold">- Priya, CTO of Cloudify</span>
+              </div>
+              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
+                <p className="text-lg italic mb-4">
+                  “Their AI expertise is unmatched. Highly recommended!”
+                </p>
+                <span className="font-semibold">
+                  - Omar, Founder of DataNext
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr className="w-[90%] mx-auto border-t-2 border-white/20 my-0" />
+
+        {/* Latest News Section */}
+        <section
+          id="news"
+          className="py-16 w-full flex flex-col items-center min-h-screen justify-center relative overflow-hidden"
+        >
+          <div className="relative z-10 w-full flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-12">
+              Latest News
+            </h2>
+            <div className="flex flex-col md:flex-row gap-8 max-w-4xl w-full justify-center">
+              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
+                <h3 className="font-semibold text-2xl mb-2">
+                  Nexus AI launches new cloud platform
+                </h3>
+                <p className="text-base opacity-80">
+                  Our latest platform leverages AI to optimize cloud operations
+                  for enterprises.
+                </p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-6 flex-1 min-w-[250px]">
+                <h3 className="font-semibold text-2xl mb-2">
+                  Upcoming Webinar: AI in Business
+                </h3>
+                <p className="text-base opacity-80">
+                  Join us for a live session on integrating AI into your
+                  business workflows. Register now!
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr className="w-[90%] mx-auto border-t-2 border-white/20 my-0" />
+
+        {/* CTA Section */}
+        <section
+          id="contact"
+          className="py-16 w-full flex flex-col items-center min-h-screen justify-center relative overflow-hidden"
+        >
+          <div className="relative z-10 w-full flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-8">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-xl mb-8 max-w-2xl text-center opacity-80">
+              Partner with Nexus AI for cutting-edge digital and cloud solutions
+              tailored to your needs. Let’s build the future together.
+            </p>
+            <a
+              href="https://nexusai.zohobookings.com/#/4735220000000042052"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-white font-bold px-10 py-4 rounded-full text-xl hover:bg-primary/80 transition"
+            >
+              Hire Us for Services
+            </a>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="w-full py-8 text-center text-sm mt-auto">
           © {new Date().getFullYear()} AI Nexus Consulting FZ-LLC. All rights
           reserved.
-        </p>
+        </footer>
       </div>
     </div>
   );
