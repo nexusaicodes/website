@@ -139,9 +139,13 @@
 }
 
 body {
-  background-image: url('/hero-bg.jpg');
+  background-image: url("/hero-bg.jpg");
   background-repeat: no-repeat;
   background-position: top right;
   background-size: cover;
-  background-attachment: fixed;
+}
+html,
+body {
+  height: 100vh;
+  overflow-x: hidden;
 }
