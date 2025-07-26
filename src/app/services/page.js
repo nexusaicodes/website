@@ -5,7 +5,6 @@ import React from "react";
 import Navigation from "../../components/Navigation";
 
 export default function ServicesPage() {
-
   // Section data for easier mapping
   const sections = [
     {
@@ -74,25 +73,27 @@ export default function ServicesPage() {
               id={section.id}
               className={`section-padding-mobile w-full flex flex-col md:flex-row ${idx % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"} items-center min-h-screen justify-center relative overflow-hidden`}
             >
-              {/* Image (hidden on mobile) */}
-              <div className="hidden md:flex flex-1 justify-center items-center">
-                <Image
-                  src={section.image}
-                  alt={section.title + " visual"}
-                  width={500}
-                  height={500}
-                  className="rounded-xl shadow-lg"
-                />
-              </div>
               {/* Text Content */}
-              <div className="relative z-10 w-full flex flex-col items-center max-w-3xl mx-auto flex-1 container-padding-mobile">
+              <div className="z-10 w-full flex flex-col items-center max-w-3xl mx-auto container-padding-mobile">
                 <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-center">
                   {section.title}
                 </h3>
                 <p className="mb-4 sm:mb-6 font-semibold text-center text-lg sm:text-xl md:text-2xl lg:text-3xl">
                   {section.strong}
                 </p>
-                <p className="mb-4 text-center text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">{section.body}</p>
+                <p className="mb-4 text-justify md:text-center text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
+                  {section.body}
+                </p>
+              </div>
+              {/* Image (shown on mobile below text, positioned on desktop) */}
+              <div className="flex md:flex-1 justify-center items-center mt-4 md:mt-0 px-4 md:px-0">
+                <Image
+                  src={section.image}
+                  alt={section.title + " visual"}
+                  width={500}
+                  height={500}
+                  className="rounded-xl shadow-lg w-4/5 md:w-auto max-w-sm md:max-w-none"
+                />
               </div>
             </section>
             <hr className="w-[90%] mx-auto border-t-2 border-white/20 my-0" />
