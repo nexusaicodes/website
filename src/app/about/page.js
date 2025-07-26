@@ -95,7 +95,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 max-w-2xl text-center opacity-80">
               Partner with Nexus AI for cutting-edge technological solutions
-              tailored to your needs. Let's build the future together.
+              tailored to your needs. Let&apos;s build the future together.
             </p>
             <a
               href="https://nexusai.zohobookings.com/#/4735220000000042052"

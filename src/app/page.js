@@ -76,20 +76,20 @@ export default function Home() {
             <div className="flex flex-col md:flex-row gap-6 sm:gap-8 max-w-4xl w-full justify-center">
               <div className="bg-white/10 mobile-card flex-1 min-w-[250px]">
                 <p className="text-base sm:text-lg md:text-xl italic mb-4">
-                  "Nexus AI transformed our business with their innovative
-                  solutions!"
+                  &ldquo;Nexus AI transformed our business with their innovative
+                  solutions!&rdquo;
                 </p>
                 <span className="font-semibold text-sm sm:text-base md:text-lg">- Alex, CEO of TechCorp</span>
               </div>
               <div className="bg-white/10 mobile-card flex-1 min-w-[250px]">
                 <p className="text-base sm:text-lg md:text-xl italic mb-4">
-                  "Professional, reliable, and truly ahead of the curve."
+                  &ldquo;Professional, reliable, and truly ahead of the curve.&rdquo;
                 </p>
                 <span className="font-semibold text-sm sm:text-base md:text-lg">- Priya, CTO of Cloudify</span>
               </div>
               <div className="bg-white/10 mobile-card flex-1 min-w-[250px]">
                 <p className="text-base sm:text-lg md:text-xl italic mb-4">
-                  "Their AI expertise is unmatched. Highly recommended!"
+                  &ldquo;Their AI expertise is unmatched. Highly recommended!&rdquo;
                 </p>
                 <span className="font-semibold text-sm sm:text-base md:text-lg">
                   - Omar, Founder of DataNext
@@ -112,7 +112,7 @@ export default function Home() {
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 max-w-2xl text-center opacity-80">
               Partner with Nexus AI for cutting-edge technological solutions
-              tailored to your needs. Let's build the future together.
+              tailored to your needs. Let&apos;s build the future together.
             </p>
             <a
               href="https://nexusai.zohobookings.com/#/4735220000000042052"
