@@ -37,25 +37,25 @@ export default function Home() {
         >
           <div className="relative z-10 w-full flex flex-col items-center container-padding-mobile">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 sm:mb-12 text-center">
-              Latest News
+              Putting Your Business First
             </h2>
             <div className="flex flex-col md:flex-row gap-6 sm:gap-8 max-w-4xl w-full justify-center">
               <div className="bg-white/10 mobile-card flex-1 min-w-[250px]">
                 <h3 className="font-semibold text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4">
-                  Nexus AI launches new cloud platform
+                  Is AI ready for your business?
                 </h3>
                 <p className="text-sm sm:text-base md:text-lg opacity-80">
-                  Our latest platform leverages AI to optimize cloud operations
-                  for enterprises.
+                  While the market rushes to adopt AI, we will help in building
+                  the AI which is right for your business.
                 </p>
               </div>
               <div className="bg-white/10 mobile-card flex-1 min-w-[250px]">
                 <h3 className="font-semibold text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4">
-                  Upcoming Webinar: AI in Business
+                  What technology is best for your business?
                 </h3>
                 <p className="text-sm sm:text-base md:text-lg opacity-80">
-                  Join us for a live session on integrating AI into your
-                  business workflows. Register now!
+                  From Cloud to Digital Transformation, we will help you find the best
+                  technology for your business.
                 </p>
               </div>
             </div>
@@ -71,29 +71,24 @@ export default function Home() {
         >
           <div className="relative z-10 w-full flex flex-col items-center container-padding-mobile">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 sm:mb-12 text-center">
-              Testimonials
+              Creating Value That Lasts
             </h2>
             <div className="flex flex-col md:flex-row gap-6 sm:gap-8 max-w-4xl w-full justify-center">
               <div className="bg-white/10 mobile-card flex-1 min-w-[250px]">
-                <p className="text-base sm:text-lg md:text-xl italic mb-4">
-                  &ldquo;Nexus AI transformed our business with their innovative
-                  solutions!&rdquo;
+                <h3 className="font-semibold text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4">
+                  Nexus AI is a strategic partner for your business
+                </h3>
+                <p className="text-sm sm:text-base md:text-lg opacity-80">
+                  We are a team of experienced professionals who are dedicated to helping your business succeed.
                 </p>
-                <span className="font-semibold text-sm sm:text-base md:text-lg">- Alex, CEO of TechCorp</span>
               </div>
               <div className="bg-white/10 mobile-card flex-1 min-w-[250px]">
-                <p className="text-base sm:text-lg md:text-xl italic mb-4">
-                  &ldquo;Professional, reliable, and truly ahead of the curve.&rdquo;
+                <h3 className="font-semibold text-xl sm:text-2xl md:text-3xl mb-3 sm:mb-4">
+                  Products, Solutions, and Services
+                </h3>
+                <p className="text-sm sm:text-base md:text-lg opacity-80">
+                  We offer a wide range of products, solutions, and services to help your business succeed.
                 </p>
-                <span className="font-semibold text-sm sm:text-base md:text-lg">- Priya, CTO of Cloudify</span>
-              </div>
-              <div className="bg-white/10 mobile-card flex-1 min-w-[250px]">
-                <p className="text-base sm:text-lg md:text-xl italic mb-4">
-                  &ldquo;Their AI expertise is unmatched. Highly recommended!&rdquo;
-                </p>
-                <span className="font-semibold text-sm sm:text-base md:text-lg">
-                  - Omar, Founder of DataNext
-                </span>
               </div>
             </div>
           </div>
