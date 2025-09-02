@@ -116,7 +116,7 @@ export default function Home() {
                   Cloud Cost Reduction
                 </h3>
                 <p className="text-sm sm:text-base md:text-lg opacity-80 mb-4">
-                  Is your AWS bill spiraling out of control? I find and
+                  Is your AWS bill spiraling out of control? We find and
                   eliminate wasted cloud spend, freeing up cash for R&D and
                   hiring.
                 </p>
@@ -126,8 +126,8 @@ export default function Home() {
                   Cloud-Native Solutions
                 </h3>
                 <p className="text-sm sm:text-base md:text-lg opacity-80 mb-4">
-                  Are you stuck on a legacy monolith? I help you leverage native
-                  cloud services to build faster, more resilient systems.
+                  Are you stuck on a legacy monolith? We help you leverage
+                  native cloud services to build faster, more resilient systems.
                 </p>
               </div>
               <div className="bg-white/10 mobile-card flex-1 min-w-[300px]">
@@ -135,11 +135,11 @@ export default function Home() {
                   AI Workloads
                 </h3>
                 <p className="text-sm sm:text-base md:text-lg opacity-80 mb-4">
-                  Are your customer service or sales teams bogged down? I build
+                  Are your customer service or sales teams bogged down? We build
                   and integrate custom AI solutions—like AI-powered
                   voice-of-customer analysis or sales agent assistants—that
                   automate repetitive tasks and directly impact your bottom
-                  line. I handle everything from infrastructure setup to model
+                  line. We handle everything from infrastructure setup to model
                   deployment and management.
                 </p>
               </div>
@@ -160,8 +160,8 @@ export default function Home() {
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 max-w-3xl text-center opacity-80">
               Let&apos;s have a conversation about your specific challenges.
-              I&apos;ll audit your current setup and show you exactly how we can
-              reduce costs, improve performance, and scale your business.
+              We&apos;ll audit your current setup and show you exactly how we
+              can reduce costs, improve performance, and scale your business.
             </p>
             <a
               href="https://nexusai.zohobookings.com/#/4735220000000042052"

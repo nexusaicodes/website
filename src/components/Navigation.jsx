@@ -69,15 +69,6 @@ export default function Navigation() {
       ],
     },
     {
-      label: "Services",
-      dropdown: [
-        { title: "Cloud Excellence", href: "/services#cloud-excellence" },
-        { title: "AI-First Development", href: "/services#ai-development" },
-        { title: "Digital Journey", href: "/services#digital-journey" },
-        { title: "AI for Enterprise", href: "/services#ai-for-enterprise" },
-      ],
-    },
-    {
       label: "News & Events",
       dropdown: [
         { title: "Latest News", href: "/news" },
@@ -212,9 +203,7 @@ export default function Navigation() {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div
-          className="md:hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999]"
-        >
+        <div className="md:hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999]">
           <div
             className="absolute top-0 right-0 w-full h-[100vh] bg-black shadow-xl"
             data-mobile-menu
@@ -222,7 +211,9 @@ export default function Navigation() {
             <div className="flex flex-col h-full">
               {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/20">
-                <span className="text-lg sm:text-xl font-bold text-white">Menu</span>
+                <span className="text-lg sm:text-xl font-bold text-white">
+                  Menu
+                </span>
                 <button
                   onClick={toggleMobileMenu}
                   className="text-white/70 hover:text-white p-2 touch-manipulation"
