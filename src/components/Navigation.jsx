@@ -79,6 +79,10 @@ export default function Navigation() {
       label: "Contact Us",
       dropdown: [
         {
+          title: "LinkedIn",
+          href: "https://www.linkedin.com/in/sakshamsaxenanexusai/",
+        },
+        {
           title: "Email Us",
           href: "mailto:contact@nexusai.world?subject=Interested%20in%20your%20services",
         },
