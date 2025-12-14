@@ -8,10 +8,18 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Nexus AI | AI Nexus Consulting FZ-LLC",
-  description: "Website of AI Nexus Consulting FZ-LLC",
+  title: "Nexus AI | Strategic Technology Consulting for Sustainable Innovation",
+  description: "Bridging traditional enterprise technology with sustainable innovation. Expert consulting in digital transformation, systems architecture, EV infrastructure, and renewable energy solutions.",
+  keywords: "technology strategy, digital transformation, systems architecture, EV infrastructure, renewable energy consulting, enterprise technology, sustainable innovation, product strategy, deep tech assessment",
   icons: {
     icon: "/logo.svg",
+  },
+  openGraph: {
+    title: "Nexus AI | Strategic Technology Consulting",
+    description: "Expert technology consulting bridging enterprise needs with sustainable innovation.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Nexus AI",
   },
 };
 
